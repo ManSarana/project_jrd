@@ -4,7 +4,7 @@ from django.http.response import HttpResponse
 # Create your views here.
 
 def foods(request):
-    return HttpResponse('เมนูอร่อย ส่งบ่อย ส่งแม่น')
+    return render(request, 'app_food/foods.html')
 
 def food(request, food_id):
-    return HttpResponse('this menu ID = ' + str(food_id))
+    return render(request, 'app_food/food.html', context={'food_id': food_id})
