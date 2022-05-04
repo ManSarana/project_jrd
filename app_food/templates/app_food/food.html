@@ -1,29 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Junraider</title>
-</head>
-<body>
-    <header style="background-color: lightblue">
-        <a href="">Junraider</a>
-        <a href="">All menu</a>
-        <a href="">About</a>
-    </header>
-    <div>
-        <h1>This menu ID = {{ food_id  }} </h1>
-        <p>lorem ipsum dolor sit amet, consectet</p>
-    </div>
-    <footer style="background-color: lightblue">
-        <h5>follow me and get promotions</h5>
-        <p>
-            <a href="">Facebook</a>
-            <a href="">Twitter</a>
-            <a href="">Instagram</a>
-        </p>
-        <p>Copyright ; 2014</p>
-    </footer>
-</body>
-</html>
+{% extends 'app_general/components/base.html' %}
+
+{% block site_title %} {{ food.title  }} {% endblock %}
+
+{% block content %}
+
+{% if food is not None %}
+<div>
+    <h3>{{ food.title  }}</h3>
+    <p>{{ food.price |floatformat:'g' }} Bath</p>       
+    {% if food.is_premium %}
+        <p>*** premium menu</p>
+    {% endif%}
+    <p>promotion end at {{food.promotion_end_at |date:'j N Y'}}</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex quod vel beatae nobis, minus incidunt rerum aliquam enim accusantium veniam voluptas modi perferendis dolore nesciunt, voluptatem totam illo adipisci cupiditate.</p>
+</div>
+{% else %}
+
+{% endif %}
+
+{% endblock %}
